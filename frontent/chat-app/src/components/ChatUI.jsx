@@ -18,7 +18,7 @@ function ChatUI({setUserInfo, userInfo, username}) {
   const nevigate = useNavigate()
 
   if(username === ""){
-    nevigate('/')
+    nevigate('/chat')
   }
 
   
