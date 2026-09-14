@@ -1,0 +1,10 @@
+[build]
+  base = "frontent/chat-app"
+  publish = "frontent/chat-app/dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
