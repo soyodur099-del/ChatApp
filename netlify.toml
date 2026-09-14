@@ -5,6 +5,7 @@
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/index.html"     # 🚀 FIX: Removed the frontent/chat-app prefix from here!
   status = 200
+  
   
