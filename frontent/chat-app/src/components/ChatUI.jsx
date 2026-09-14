@@ -70,18 +70,7 @@ useEffect(()=>{
         
 
         
-        {userInfo.map((item)=>{
-
-      return(<>
-      <div className="msg-row sent">
-          <div className="bubble">
-            {item.msg}
-            <small>10:21 AM</small>
-          </div>
-        </div>
-      
-      </>)
-        })}
+        
 
         {AllMsg.map((item)=>{
 
@@ -94,6 +83,18 @@ useEffect(()=>{
             <small>10:20 AM</small>
           </div>
         </div>
+      </>)
+        })}
+        {userInfo.map((item)=>{
+
+      return(<>
+      <div className="msg-row sent">
+          <div className="bubble">
+            {item.msg}
+            <small>10:21 AM</small>
+          </div>
+        </div>
+      
       </>)
         })}
         
