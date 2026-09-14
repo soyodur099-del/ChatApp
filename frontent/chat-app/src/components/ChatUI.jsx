@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
 
-const socket = io('https://soyodur-api.onrender.com/')
+const socket = io('https://soyodur-api1.onrender.com/')
 
 function ChatUI({setUserInfo, userInfo, username}) {
 
