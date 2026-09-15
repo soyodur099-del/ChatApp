@@ -1,4 +1,4 @@
-import './ChatUI.css'
+import "./ChatUI.css";
 import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
