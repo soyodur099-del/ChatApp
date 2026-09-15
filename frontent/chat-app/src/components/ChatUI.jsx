@@ -1,10 +1,9 @@
-import "./ChatUI.css";
 import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
 import {useRef} from 'react'
 
-const socket = io('https://soyodur-api.onrender.com')
+const socket = io('http://localhost:3000')
 
 function ChatUI({setUserInfo, userInfo, username}) {
 
@@ -38,6 +37,7 @@ useEffect(()=>{
   }
 
   const msgRef = useRef(null);
+  const msgCon = useRef(null)
   const [Time, setTime] = useState("")
   
 
@@ -96,7 +96,7 @@ useEffect(()=>{
 
         <button className="attach-btn">＋</button>
 
-        <input onChange={(e)=>{
+        <input ref={msgCon} onChange={(e)=>{
       const CurrentTime = new Date().toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
@@ -112,6 +112,7 @@ useEffect(()=>{
 
         
         <button className="send-btn" onClick={()=>{
+      msgCon.current.value ="";
 const currentTime = new Date().toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
