@@ -2,8 +2,9 @@ import "./ChatUI.css";
 import { io } from "socket.io-client";
 import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
+import {useRef} from 'react'
 
-const socket = io('https://soyodur-api.onrender.com/')
+const socket = io('http://localhost:3000')
 
 function ChatUI({setUserInfo, userInfo, username}) {
 
@@ -36,7 +37,8 @@ useEffect(()=>{
     
   }
 
-  
+  const msgRef = useRef(null);
+  const [Time, setTime] = useState("")
   
 
 
@@ -65,11 +67,10 @@ useEffect(()=>{
 
 
       {/* Messages */}
-      <main className="messages">
+      <main ref={msgRef} className="messages">
 
         
 
-        
         
 
         {AllMsg.map((item)=>{
@@ -80,21 +81,9 @@ useEffect(()=>{
           <div className="bubble">
             <div className="sender-name">{item.user}</div>
             {item.msg}
-            <small>10:20 AM</small>
+            <small>{item.time}</small>
           </div>
         </div>
-      </>)
-        })}
-        {userInfo.map((item)=>{
-
-      return(<>
-      <div className="msg-row sent">
-          <div className="bubble">
-            {item.msg}
-            <small>10:21 AM</small>
-          </div>
-        </div>
-      
       </>)
         })}
         
@@ -108,6 +97,13 @@ useEffect(()=>{
         <button className="attach-btn">＋</button>
 
         <input onChange={(e)=>{
+      const CurrentTime = new Date().toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }).toUpperCase();
+      setTime(CurrentTime);
+      console.log(CurrentTime);
       setNewUser(e.target.value)
         }}
           type="text"
@@ -116,10 +112,28 @@ useEffect(()=>{
 
         
         <button className="send-btn" onClick={()=>{
+const currentTime = new Date().toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }).toUpperCase();
+      setTime(currentTime);
+      console.log(currentTime);
+
+
+      
+      {msgRef.current.innerHTML +=`<div class="msg-row sent">
+          <div class="bubble">
+          <div class="sender-name"></div>
+            ${NewUser}
+            <small>${Time}</small>
+          </div>
+        </div>`};
 
 
       const UserInfo = [...userInfo, {'user': username,
-  'msg': NewUser}]
+  'msg': NewUser,
+  'time': currentTime}]
     
 setUserInfo(UserInfo)
       
