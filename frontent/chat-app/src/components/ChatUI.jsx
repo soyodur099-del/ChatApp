@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react'
 import {useRef} from 'react'
 
-const socket = io('http://localhost:3000')
+const socket = io('https://soyodur-api.onrender.com')
 
 function ChatUI({setUserInfo, userInfo, username}) {
 
